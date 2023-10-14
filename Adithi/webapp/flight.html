@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Travel Planner - Flight Booking</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="flight.css">
+    <style>
+  </style>
+<!--    <style>-->
+<!--    .flight-card {-->
+<!--        display: none;-->
+<!--    }-->
+<!--    </style>-->
+</style>
+
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">TripHive</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="main.html">Recommendations</a>
+                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="hotel.html">Hotel Booking</a>-->
+<!--                    </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="activity.html">Activity Booking</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<hr>
+<main class="container">
+    <div class="flight-search-bar">
+        <form>
+            <div class="row align-items-end">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="origin">Origin</label>
+                        <input type="text" id="origin" class="form-control" placeholder="Enter your location">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <input type="text" id="destination" class="form-control" placeholder="Enter your destination">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="dateFrom">Date From</label>
+                        <input type="date" id="dateFrom" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary search-btn">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <hr>
+    <div class="flight-search-results">
+        <div class="flight-card">
+            <div class="card-body">
+                <h5 class="card-title">Flight Option 1</h5>
+                <p class="card-info">Details of Flight Option 1</p>
+                <button class="btn btn-success book-btn">Book</button>
+            </div>
+        </div>
+
+        <div class="flight-card">
+            <div class="card-body">
+                <h5 class="card-title">Flight Option 2</h5>
+                <p class="card-info">Details of Flight Option 2</p>
+                <button class="btn btn-success book-btn">Book</button>
+            </div>
+        </div>
+
+        <div class="flight-card">
+            <div class="card-body">
+                <h5 class="card-title">Flight Option 3</h5>
+                <p class="card-info">Details of Flight Option 3</p>
+                <button class="btn btn-success book-btn">Book</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2023 TripHive. All rights reserved.</p>
+    </div>
+    <script>
+  (function (w, d, s, o, f, js, fjs) {
+    w["botsonic_widget"] = o;
+    w[o] =
+      w[o] ||
+      function () {
+        (w[o].q = w[o].q || []).push(arguments);
+      };
+    (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
+    js.id = o;
+    js.src = f;
+    js.async = 1;
+    fjs.parentNode.insertBefore(js, fjs);
+  })(window, document, "script", "Botsonic", "https://widget.writesonic.com/CDN/botsonic.min.js");
+  Botsonic("init", {
+    serviceBaseUrl: "https://api.botsonic.ai",
+    token: "31277fb3-b341-40b6-a627-9c7c2ed115bb",
+  });
+</script>
+</footer>
+
+<script>
+  // Function to create and display flight cards
+  function displayFlightCards(flights) {
+    const flightResultsElement = document.querySelector('.flight-search-results');
+    flightResultsElement.innerHTML = ''; // Clear existing cards
+
+    flights.forEach(flight => {
+      const flightCard = document.createElement('div');
+      flightCard.classList.add('flight-card');
+
+      const cardBody = document.createElement('div');
+      cardBody.classList.add('card-body');
+
+      const cardTitle = document.createElement('h5');
+      cardTitle.classList.add('card-title');
+      cardTitle.textContent = `${flight.cityCodeFrom} to ${flight.cityCodeTo}`;
+
+      const cardInfo = document.createElement('p');
+      cardInfo.classList.add('card-info');
+      cardInfo.innerHTML = `Flight ID: <strong>${flight.id}</strong><br>Base Fare: ${flight.price_dropdown.base_fare}`;
+
+      const bookButton = document.createElement('button');
+      bookButton.classList.add('btn', 'btn-success', 'book-btn');
+      bookButton.textContent = 'Book';
+
+      cardBody.appendChild(cardTitle);
+      cardBody.appendChild(cardInfo);
+      cardBody.appendChild(bookButton);
+      flightCard.appendChild(cardBody);
+
+      flightResultsElement.appendChild(flightCard);
+    });
+  }
+
+  // Event listener for the "Search" button
+  document.querySelector('.search-btn').addEventListener('click', function (event) {
+    event.preventDefault();
+
+    // Fetch and process JSON data here
+    fetch('flight_data.json')
+      .then(response => response.json())
+      .then(data => {
+        const flights = data.data;
+        // Call the function to display flight cards
+        displayFlightCards(flights);
+      })
+      .catch(error => console.error('Error fetching flight data:', error));
+  });
+</script>
+
+
+
+<!--<script>-->
+<!--  // Fetch and process JSON data-->
+<!--  fetch('flight_data.json')-->
+<!--    .then(response => response.json())-->
+<!--    .then(data => {-->
+<!--      // Access the flight data from the JSON-->
+<!--      const flights = data.data;-->
+
+<!--      // Create flight cards dynamically-->
+<!--      const flightResultsElement = document.querySelector('.flight-search-results');-->
+<!--      flights.forEach(flight => {-->
+<!--        const flightCard = document.createElement('div');-->
+<!--        flightCard.classList.add('flight-card');-->
+
+<!--        const cardBody = document.createElement('div');-->
+<!--        cardBody.classList.add('card-body');-->
+
+<!--        const cardTitle = document.createElement('h5');-->
+<!--        cardTitle.classList.add('card-title');-->
+<!--        cardTitle.textContent = `${flight.cityCodeFrom} to ${flight.cityCodeTo}`;-->
+
+<!--        const cardInfo = document.createElement('p');-->
+<!--        cardInfo.classList.add('card-info');-->
+<!--        cardInfo.innerHTML = `Flight ID: <strong>${flight.id}</strong><br>Base Fare: ${flight.price_dropdown.base_fare}`;-->
+
+<!--        const bookButton = document.createElement('button');-->
+<!--        bookButton.classList.add('btn', 'btn-success', 'book-btn');-->
+<!--        bookButton.textContent = 'Book';-->
+
+<!--        cardBody.appendChild(cardTitle);-->
+<!--        cardBody.appendChild(cardInfo);-->
+<!--        cardBody.appendChild(bookButton);-->
+<!--        flightCard.appendChild(cardBody);-->
+
+<!--        flightResultsElement.appendChild(flightCard);-->
+<!--      });-->
+<!--    })-->
+<!--    .catch(error => console.error('Error fetching flight data:', error));-->
+<!--</script>-->
+
+
+</body>
+</html>

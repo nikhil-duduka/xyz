@@ -1,0 +1,117 @@
+/* Common Styles */
+.body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.nik{
+    display: flex;
+    width: 42%;
+    justify-content: center;
+}
+
+.search-bar {
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.card {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.main {
+  width: 80%; /* Adjust the width as needed */
+  max-width: 600px; /* Set a max-width to limit the content width */
+}
+
+
+.search-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-weight: bold;
+}
+
+.search-btn:hover {
+    background-color:#0056b3; /* Changed color */
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+.navbar {
+  background: linear-gradient(to right, #007bff, #333);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex; /* Add flexbox */
+  flex-direction: row; /* Add flex-direction */
+}
+
+.nav-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.nav-link {
+  color: #fff;
+}
+
+
+/* Specific Styles for Activity Page */
+
+footer {
+  background: linear-gradient(to right, #007bff, #333);
+  color: #fff;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  padding: 20px 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .navbar-nav.nav-link {
+    display: none;
+  }
+
+  .activity-search-results .activity-card {
+    width: 100%;
+  }
+}

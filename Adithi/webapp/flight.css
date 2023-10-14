@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Travel Planner - Flight Booking</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+
+
+    /* Flight Booking Page */
+    .flight-search-bar {
+      margin-bottom: 30px;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .flight-search-bar .form-group {
+      margin-bottom: 10px;
+    }
+
+    .flight-search-bar .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .flight-search-bar .form-control {
+      height: 40px;
+    }
+
+    .flight-search-bar .search-btn {
+      height: 40px;
+      font-weight: 600;
+      text-transform: uppercase;
+      background-color: #007bff;
+      border-color: #007bff;
+      color: #fff;
+      margin-top: 9px;
+    }
+
+    .flight-search-bar .search-btn:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+
+    .flight-search-results {
+      margin-bottom: 30px;
+    }
+
+    .flight-search-results .flight-card {
+      border: none;
+      border-radius: 10px;
+      background-color: #fff;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .flight-search-results .flight-card .card-body {
+      border:1px solid black;
+      padding: 20px;
+    }
+
+    .flight-search-results .flight-card .card-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .flight-search-results .flight-card .card-info {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .flight-search-results .flight-card .book-btn {
+      background-color: #28a745;
+      border-color: #28a745;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .flight-search-results .flight-card .book-btn:hover {
+      background-color: #218838;
+      border-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">TripHive</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Recommendations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="hotel.html">Hotel Booking</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="activity.html">Activity Booking</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="flight-search-bar">
+      <form>
+        <div class="row align-items-end">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="origin">Origin</label>
+              <input type="text" id="origin" class="form-control" placeholder="Enter your location">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="destination">Destination</label>
+              <input type="text" id="destination" class="form-control" placeholder="Enter your destination">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <button type="submit" class="btn btn-primary search-btn">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="flight-search-results">
+      <div class="flight-card">
+        <div class="card-body">
+          <h5 class="card-title">Flight Option 1</h5>
+          <p class="card-info">Details of Flight Option 1</p>
+          <button class="btn btn-success book-btn">Book</button>
+        </div>
+      </div>
+
+      <div class="flight-card">
+        <div class="card-body">
+          <h5 class="card-title">Flight Option 2</h5>
+          <p class="card-info">Details of Flight Option 2</p>
+          <button class="btn btn-success book-btn">Book</button>
+        </div>
+      </div>
+
+      <div class="flight-card">
+        <div class="card-body">
+          <h5 class="card-title">Flight Option 3</h5>
+          <p class="card-info">Details of Flight Option 3</p>
+          <button class="btn btn-success book-btn">Book</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 TripHive. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

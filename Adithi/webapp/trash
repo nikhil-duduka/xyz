@@ -1,0 +1,54 @@
+<script>
+    // Fetch and process JSON data
+    fetch('flight_data.json')
+        .then(response => response.json())
+        .then(data => {
+            // Access the flight data from the JSON
+            const flights = data.data;
+
+            // Create flight cards dynamically
+            const flightResultsElement = document.querySelector('.flight-search-results');
+            flights.forEach(flight => {
+                const flightCard = document.createElement('div');
+                flightCard.classList.add('flight-card');
+
+                const cardBody = document.createElement('div');
+                cardBody.classList.add('card-body');
+
+                const cardTitle = document.createElement('h5');
+                cardTitle.classList.add('card-title');
+                cardTitle.textContent = `${flight.cityCodeFrom} to ${flight.cityCodeTo}`;
+
+                const cardInfo = document.createElement('p');
+                cardInfo.classList.add('card-info');
+                cardInfo.innerHTML = `Flight ID: <strong>${flight.id}</strong><br>Base Fare: ${flight.price_dropdown.base_fare}`;
+
+                const bookButton = document.createElement('button');
+                bookButton.classList.add('btn', 'btn-success', 'book-btn');
+                bookButton.textContent = 'Book';
+
+                // Add event listener to the book button
+                bookButton.addEventListener('click', () => {
+                    // Replace 'https://www.example.com' with the desired URL
+                    window.location.href = 'https://www.example.com';
+                });
+
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardInfo);
+                cardBody.appendChild(bookButton);
+                flightCard.appendChild(cardBody);
+
+                flightResultsElement.appendChild(flightCard);
+            });
+        })
+        .catch(error => console.error('Error fetching flight data:', error));
+</script>
+ // to redirect when clicked on the book button;
+
+
+
+ <div class="search-bar">
+         <input type="text" id="destination-input" placeholder="Enter destination">
+         <input type="date" id="check-in" placeholder="CHECK IN">
+         <button id="search-hotels-btn" class="btn btn-primary">Search</button>
+     </div>
